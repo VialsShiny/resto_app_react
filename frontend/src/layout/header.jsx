@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const UserInfo = ({ token }) => {
   if (token) {
     return (
@@ -42,10 +44,10 @@ const Header = () => {
             <a href="/" className="font-bold text-black text-2xl hover:text-red-600 transition-all">Resto app</a>
           </div>
           <div className="hidden md:flex gap-x-8 font-semibold text-black text-sm">
-            <a className="hover:text-red-600 transition-all" href="/">Home</a>
-            <a className="hover:text-red-600 transition-all" href="/menu">Menu</a>
-            <a className="hover:text-red-600 transition-all" href="/about">About</a>
-            <a className="hover:text-red-600 transition-all" href="/contact">Contact</a>
+            <Link className="hover:text-red-600 transition-all" to="/">Home</Link>
+            <Link className="hover:text-red-600 transition-all" to="/menu">Menu</Link>
+            <Link className="hover:text-red-600 transition-all" to="/about">About</Link>
+            <Link className="hover:text-red-600 transition-all" to="/contact">Contact</Link>
           </div>
           <div className="flex space-x-6 items-center">
             <UserInfo token={token} />
