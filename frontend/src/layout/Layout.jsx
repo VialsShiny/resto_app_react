@@ -1,12 +1,13 @@
 import Header from './header';
 import Footer from './footer';
 import { Outlet } from 'react-router-dom';
+import Loader from '../components/loader';
 
 export default function Layout() {
   return (
     <>
       <Header />
-      <main className="min-h-screen px-24 bg-gray-800">
+      <main>
         <Outlet />
       </main>
       <Footer />
