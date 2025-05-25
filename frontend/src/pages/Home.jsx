@@ -19,6 +19,7 @@ function ViewMoreArrow() {
 const Home = () => {
   const [categories, setCategories] = useState([]);
   const [categorySelect, setCategorySelect] = useState(1);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     document.title = 'Resto App | Home';
@@ -32,6 +33,8 @@ const Home = () => {
         setCategories(data.categories);
       } catch (error) {
         console.error('Erreur:', error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -103,23 +106,28 @@ const Home = () => {
       </section>
       <section className="flex flex-col gap-6 px-12 py-16">
         <div className="category-container w-full lg:px-24 py-8 flex lg:grid flex-wrap lg:grid-cols-4 gap-8" id="category-container">
-          {
-            categories.map((category) => {
-              return (
-                <CategoryButton
-                  key={category.id}
-                  category={category}
-                  categorySelect={categorySelect}
-                  setCategorySelect={setCategorySelect}
-                />
-              )
-            })
+          {loading ? (
+            <div className='flex lg:grid w-full lg:w-auto justify-center lg:justify-end lg:col-span-2'>
+              <Loader />
+            </div>
+          ) : categories.map((category) => {
+            return (
+              <CategoryButton
+                key={category.id}
+                category={category}
+                categorySelect={categorySelect}
+                setCategorySelect={setCategorySelect}
+              />
+            )
+          })
           }
         </div>
         <div className="relative menu-container w-full min-h-96 py-8 lg:px-12 flex lg:grid flex-wrap lg:grid-cols-4 justify-center items-center gap-8" id="menu-container">
-          {selectedCategory && (
+          {loading ? (
+            <Loader className='loader-infinite' />
+          ) : selectedCategory && (
             <>
-              <GetProductsCard products={selectedCategory.products} />
+              <GetProductsCard products={selectedCategory.products.slice(0, 3)} />
               <ViewMoreArrow />
             </>
           )}
