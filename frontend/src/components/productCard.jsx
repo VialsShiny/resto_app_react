@@ -6,7 +6,7 @@ const GetProductsCard = ({ products }) => {
       {products.map((product) => (
         <div
           key={product.id}
-          className="max-w-xs w-full rounded-2xl overflow-hidden shadow-lg"
+          className="max-w-xs w-full rounded-2xl overflow-hidden shadow-lg animate__animated animate__fadeIn animate__fast"
         >
           <div className="relative">
             <img

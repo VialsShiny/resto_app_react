@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import 'remixicon/fonts/remixicon.css';
 import './dist/output.css';
+import 'animate.css';
 import App from './App';
 // import reportWebVitals from './reportWebVitals';
 
