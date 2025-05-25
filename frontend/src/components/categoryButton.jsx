@@ -6,7 +6,13 @@ export default function CategoryButton({ category, categorySelect, setCategorySe
     <div
       className={`category-card w-full font-bold flex items-center gap-x-6 p-3 rounded-4xl shadow-md transition-all duration-500 ${categorySelect === category.id ? selectClass : notSelectClass
         }`}
-      onClick={() => setCategorySelect(category.id)}
+      onClick={() => {
+        if (window.location.pathname != '/menu') {
+          setCategorySelect(category.id)
+        } else {
+          setCategorySelect(prev => prev === category.id ? 0 : category.id);
+        }
+      }}
     >
       <img
         src={`http://localhost:8000/storage/assets/category/${category.name
