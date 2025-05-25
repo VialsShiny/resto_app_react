@@ -4,7 +4,7 @@ export default function CategoryButton({ category, categorySelect, setCategorySe
 
   return (
     <div
-      className={`category-card w-full font-bold flex items-center gap-x-6 p-3 rounded-4xl shadow-md transition-all duration-500 ${categorySelect === category.id ? selectClass : notSelectClass
+      className={`category-card w-full font-bold flex items-center gap-x-6 p-3 rounded-4xl shadow-md transition-all duration-500 animate__animated animate__zoomIn animate__fast ${categorySelect === category.id ? selectClass : notSelectClass
         }`}
       onClick={() => {
         if (window.location.pathname != '/menu') {

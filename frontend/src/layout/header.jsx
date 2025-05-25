@@ -36,20 +36,20 @@ const Header = () => {
   const token = localStorage.getItem('token');
 
   return (
-    <header className="w-full bg-white">
+    <header className="w-full bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-12 lg:px-24">
         <nav className="flex items-center justify-between py-4">
-          <div className="flex items-center space-x-3">
+          <div className="flex items-center space-x-3 animate__animated animate__backInDown">
             <img alt="Resto app logo" className="w-16 h-16" src="http://localhost:8000/storage/assets/logo/restoApp.svg" draggable="false" />
             <a href="/" className="font-bold text-black text-2xl hover:text-red-600 transition-all">Resto app</a>
           </div>
           <div className="hidden md:flex gap-x-8 font-semibold text-black text-sm">
-            <Link className="hover:text-red-600 transition-all" to="/">Home</Link>
-            <Link className="hover:text-red-600 transition-all" to="/menu">Menu</Link>
-            <Link className="hover:text-red-600 transition-all" to="/about">About</Link>
-            <Link className="hover:text-red-600 transition-all" to="/contact">Contact</Link>
+            <Link className="hover:text-red-600 transition-all duration-200 animate__animated animate__fadeIn animate__slower" to="/">Home</Link>
+            <Link className="hover:text-red-600 transition-all duration-200 animate__animated animate__fadeIn animate__slower" to="/menu">Menu</Link>
+            <Link className="hover:text-red-600 transition-all duration-200 animate__animated animate__fadeIn animate__slower" to="/about">About</Link>
+            <Link className="hover:text-red-600 transition-all duration-200 animate__animated animate__fadeIn animate__slower" to="/contact">Contact</Link>
           </div>
-          <div className="flex space-x-6 items-center">
+          <div className="flex space-x-6 items-center animate__animated animate__bounceInRight animate__slow">
             <UserInfo token={token} />
           </div>
         </nav>
