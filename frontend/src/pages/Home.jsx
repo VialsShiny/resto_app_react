@@ -53,11 +53,11 @@ const Home = () => {
               <i className="ri-restaurant-2-fill"></i>
             </div>
             <h2 className="text-white text-3xl sm:text-4xl md:text-5xl font-extrabold max-w-3xl leading-tight">
-              Ensure Your
-              <span className="text-red-600">
-                Food
+              Ensure Your 
+              <span className="text-red-600 px-5">
+                Food 
               </span>
-              is Delivered with Speed
+               is Delivered with Speed
             </h2>
             <p className="text-white text-xs sm:text-sm mt-3 max-w-xs sm:max-w-md md:max-w-lg leading-snug">
               Our mission is to deliver your appetite with delectable dishes delivered safely and of
