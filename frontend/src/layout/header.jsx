@@ -1,5 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
-import '../assets/styles/nav.css'
+import '../styles/nav.css'
 
 const UserInfo = ({ token }) => {
   if (token) {
