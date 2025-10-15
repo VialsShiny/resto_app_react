@@ -128,7 +128,9 @@ const Home = () => {
           ) : selectedCategory && (
             <>
               <GetProductsCard products={selectedCategory.products.slice(0, 3)} />
-              <ViewMoreArrow />
+              <div className='col-start-4'>
+                <ViewMoreArrow />
+              </div>
             </>
           )}
         </div>
