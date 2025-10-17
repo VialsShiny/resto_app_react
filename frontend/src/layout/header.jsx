@@ -1,14 +1,14 @@
 import { Link, NavLink } from "react-router-dom";
 import BasicModal from "./LoginModal";
+import Logout from "../components/logout-action";
 import '../styles/nav.css'
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-const UserInfo = ({ token, setIsModalOpen }) => {
-
+const UserInfo = ({ token, setIsModalOpen, setToken }) => {
   if (token) {
     return (
       <>
-        <button className="group flex items-center space-x-2 bg-[#F54748] hover:bg-red-600 transition-all cursor-pointer text-white text-sm font-semibold py-2 px-4 rounded-full" type="button" id="logout">
+        <button onClick={() => {setToken(), setToken(null)}} className="group flex items-center space-x-2 bg-[#F54748] hover:bg-red-600 transition-all cursor-pointer text-white text-sm font-semibold py-2 px-4 rounded-full" type="button" id="logout">
           <i className="ri-logout-box-r-line transition-all duration-300 group-hover:pr-[.3rem]"></i>
           <span>Logout</span>
         </button>
@@ -38,7 +38,18 @@ const UserInfo = ({ token, setIsModalOpen }) => {
 
 const Header = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const token = localStorage.getItem('token');
+  const [token, setToken] = useState(localStorage.getItem('token'));
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const storedToken = localStorage.getItem('token');
+      if (storedToken !== token) {
+        setToken(storedToken);
+      }
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [token]);
 
   return (
     <>
@@ -91,7 +102,7 @@ const Header = () => {
               </NavLink>
             </div>
             <div className="flex space-x-6 items-center animate__animated animate__bounceInRight animate__slow">
-              <UserInfo token={token} setIsModalOpen={setIsModalOpen} />
+              <UserInfo token={token} setIsModalOpen={setIsModalOpen} setToken={setToken} />
             </div>
           </nav>
         </div>

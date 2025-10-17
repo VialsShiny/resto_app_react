@@ -1,6 +1,6 @@
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Loader from '../components/loader';
 
 export default function BasicModal({ onClose, isOpen }) {
@@ -99,11 +99,17 @@ export default function BasicModal({ onClose, isOpen }) {
     });
     if (res.ok) {
       const user = await res.json();
-      window.location.href = 'http://localhost:3000/';
+      setTimeout(() => {
+        onClose();
+      }, 3000)
     } else {
       localStorage.removeItem('token');
-      console.error('Non connecté');
+      status.message = "Non connecté";
     }
+
+    status.isLoading = false;
+    status.isSuccess = true;
+    status.message = null;
   }
 
   return (
@@ -116,7 +122,7 @@ export default function BasicModal({ onClose, isOpen }) {
           <div>
             <h1 className="text-black text-2xl 2xl:text-4xl font-semibold mb-1">Welcome back!</h1>
             <p className="text-black text-xs 2xl:text-lg mb-6">Enter your Credentials to access your account</p>
-            {!status.isSuccess && status.message && (
+            {status.message && (
               <p className={`${!status.isSuccess ? "text-red-700" : "text-blue-500"} text-center text-xs 2xl:text-lg`}>
                 {status.message}
               </p>
