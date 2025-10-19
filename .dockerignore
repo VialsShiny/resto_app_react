@@ -1,0 +1,33 @@
+# Node & Vite - Frontend
+**/node_modules
+**/dist
+**/.vite
+**/.next
+**/npm-debug.log
+**/yarn-error.log
+
+# PHP / Laravel - Backend
+**/vendor
+**/storage/*.key
+**/storage/framework/*
+**/storage/logs/*
+**/.env
+**/.env.*
+
+# Mac & Linux system files
+**/.DS_Store
+**/.AppleDouble
+**/.LSOverride
+
+# Windows system files
+**/Thumbs.db
+**/ehthumbs.db
+**/Desktop.ini
+
+# Docker related
+.dockerignore
+docker-compose.override.yml
+
+# Git
+.git
+.gitignore
