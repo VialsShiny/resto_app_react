@@ -41,6 +41,14 @@
       "last 1 safari version"
     ]
   },
+  "resolutions": {
+    "rollup": "npm:@rollup/wasm-node"
+  },
+  "overrides": {
+    "vite": {
+      "rollup": "npm:@rollup/wasm-node"
+    }
+  },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.14",
     "@tailwindcss/vite": "^4.1.14",
