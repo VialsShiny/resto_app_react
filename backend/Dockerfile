@@ -1,6 +1,6 @@
-# backend/Dockerfile
 FROM php:8.2-cli
 
+# Installer les dépendances nécessaires + mysql-client
 RUN apt-get update && apt-get install -y \
     git \
     curl \
@@ -10,16 +10,19 @@ RUN apt-get update && apt-get install -y \
     libxml2-dev \
     zip \
     libzip-dev \
-    && docker-php-ext-install pdo_mysql zip
+    default-mysql-client \
+    && docker-php-ext-install pdo_mysql zip \
+    && rm -rf /var/lib/apt/lists/*
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 WORKDIR /var/www/html
-
 COPY . .
 
-COPY entrypoint.sh /entrypoint.sh
+RUN php artisan key:generate || true
 
-RUN chmod +x /entrypoint.sh
+COPY /entrypoint.sh /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
 
-CMD ["/entrypoint.sh"]
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
+CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8000"]
